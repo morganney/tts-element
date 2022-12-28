@@ -1,0 +1,35 @@
+{
+  "env": {
+    "browser": true,
+    "es6": true,
+    "node": true,
+    "jest": true
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:node/recommended",
+    "plugin:@typescript-eslint/recommended"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["@typescript-eslint"],
+  "rules": {
+    "no-console": "error",
+    "node/no-missing-import": "off"
+  },
+  "overrides": [
+    {
+      "files": ["bin/**/*.ts"],
+      "rules": {
+        "no-console": "off",
+        "node/shebang": [
+          "error",
+          {
+            "convertPath": {
+              "bin/**/*.ts": ["^bin/(.+?)\\.ts$", "dist/$1.js"]
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

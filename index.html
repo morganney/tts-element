@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>tts-element</title>
+  </head>
+  <style>
+    text-to-speech:not(:defined), my-tts:not(:defined), speech-synth:not(:defined) {
+      display: none;
+    }
+  </style>
+  <body>
+    <script type="module" src="./dist/text-to-speech/defined.js?name=my-tts"></script>
+    <script type="module">
+      import './dist/text-to-speech/defined.js'
+
+      const tts = document.getElementsByTagName('text-to-speech')[0]
+
+      tts.addEventListener('boundary', (evt) => {
+        console.log(evt.detail.boundary)
+      })
+      tts.addEventListener('voiceschanged', (evt) => {
+        console.log(evt.detail)
+      })
+    </script>
+    <script type="module">
+      import ctor from './dist/text-to-speech/element.js'
+
+      async function checkIfDefined(name, callback) {
+        console.log(`checking ${name}...`)
+
+        try {
+          await customElements.whenDefined(name)
+
+          console.log(`<${name}> is defined now!`)
+
+          callback()
+        } catch (err) {
+          console.log(`error checking ${name}: ${err.message}`)
+        }
+      }
+
+      setTimeout(() => {
+        customElements.define('speech-synth', ctor)
+      }, 3000)
+
+      checkIfDefined('speech-synth', () => {
+        const speechSynth = document.getElementsByTagName('speech-synth')[0]
+
+        speechSynth.addEventListener('voiceschanged', (evt) => {
+          // TODO: See about getting this to fire with delayed upgrade/definition
+          console.log(evt.detail)
+        })
+      })
+    </script>
+    <my-tts size="large" position="topCenter">
+      <p style="text-align: center;">This is my large and centered text to speech element.</p>
+    </my-tts>
+    <text-to-speech>Your run-of-the-mill text-to-speech example.</text-to-speech>
+    <speech-synth alignment="vertical" voice="Daniel">
+      <ul>
+        <li>List item one.</li>
+        <li>List item two.</li>
+      </ul>
+      Some unwrapped text.
+    </speech-synth>
+  </body>
+</html>

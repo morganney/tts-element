@@ -1,0 +1,141 @@
+:host {
+  --size-sm: 16px;
+  --size-md: 24px;
+  --size-lg: 32px;
+  --control-color: #f2f1f1a6;
+  --control-hover-color: #ebeaeaa6;
+  --control-padding: 5px;
+  --control-gap: 5px;
+  --control-spacing: calc(2 * var(--control-padding) + var(--control-gap));
+  --replay-position-sm: calc(-1 * (var(--size-sm) + var(--control-spacing)));
+  --replay-position-md: calc(-1 * (var(--size-md) + var(--control-spacing)));
+  --replay-position-lg: calc(-1 * (var(--size-lg) + var(--control-spacing)));
+
+  display: grid;
+  gap: 15px;
+  /* default to position="leftCenter" */
+  grid-template-areas: "ctl cnt";
+  grid-template-columns: auto 1fr;
+  align-items: center;
+}
+:host([position="rightCenter"]) {
+  grid-template-areas: "cnt ctl";
+  grid-template-columns: 1fr auto;
+}
+:host([position="topLeft"]) {
+  align-items: start;
+}
+:host([position="topRight"]) {
+  grid-template-areas: "cnt ctl";
+  grid-template-columns: 1fr auto;
+  align-items: start;
+}
+:host([position="topCenter"]) {
+  grid-template-columns: 1fr;
+  grid-template-areas: "ctl" "cnt";
+}
+:host([position="bottomLeft"]) {
+  align-items: end;
+}
+:host([position="bottomRight"]) {
+  grid-template-areas: "cnt ctl";
+  grid-template-columns: 1fr auto;
+  align-items: end;
+}
+:host([position="bottomCenter"]) {
+  grid-template-areas: "cnt" "ctl";
+  grid-template-columns: 1fr;
+}
+aside {
+  position: relative;
+  display: inline-flex;
+  flex-direction: row;
+  gap: var(--control-gap);
+  grid-area: ctl;
+  padding: 0;
+  margin: 0;
+  background-color: var(--control-color);
+  border-radius: var(--size-sm);
+}
+:host([position*="Center"]) aside {
+  margin: auto;
+}
+:host([alignment="vertical"]) aside {
+  flex-direction: column;
+}
+:host([size="medium"]) aside {
+  border-radius: var(--size-md);
+}
+:host([size="large"]) aside {
+  border-radius: var(--size-lg);
+}
+button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: var(--control-padding);
+  background: none;
+  background-color: transparent;
+  border: none;
+  border-radius: var(--size-sm);
+  cursor: pointer;
+  color: black;
+}
+:host([size="medium"]) button {
+  border-radius: var(--size-md);
+}
+:host([size="large"]) button {
+  border-radius: var(--size-lg);
+}
+button:hover {
+  background-color: var(--control-hover-color);
+}
+button[part="replay"] {
+  display: none;
+}
+button[part="replay"][data-active] {
+  display: flex;
+  position: absolute;
+  z-index: 9999;
+  bottom: auto;
+  right: var(--replay-position-sm);
+}
+:host([size="medium"]) button[part="replay"][data-active] {
+  right: var(--replay-position-md);
+}
+:host([size="large"]) button[part="replay"][data-active] {
+  right: var(--replay-position-lg);
+}
+:host([alignment="vertical"]) button[part="replay"][data-active] {
+  right: auto;
+  bottom: var(--replay-position-sm);
+}
+:host([alignment="vertical"][size="medium"]) button[part="replay"][data-active] {
+  bottom: var(--replay-position-md);
+}
+:host([alignment="vertical"][size="large"]) button[part="replay"][data-active] {
+  bottom: var(--replay-position-lg);
+}
+button svg {
+  display: none;
+  width: var(--size-sm);
+  height: var(--size-sm);
+}
+button[data-active] svg {
+  display: inline;
+}
+button svg[data-active] {
+  display: inline;
+}
+:host([size="medium"]) button svg {
+  width: var(--size-md);
+  height: var(--size-md);
+}
+:host([size="large"]) button svg {
+  width: var(--size-lg);
+  height: var(--size-lg);
+}
+div[part="children"] {
+  grid-area: cnt;
+}
