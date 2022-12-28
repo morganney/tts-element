@@ -1,6 +1,6 @@
 {
   "name": "tts-element",
-  "version": "0.0.1",
+  "version": "0.0.1-beta",
   "description": "HTML custom element to convert text to speech using the Web Speech API.",
   "type": "module",
   "main": "dist/text-to-speech/defined.js",
