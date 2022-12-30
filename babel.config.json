@@ -4,5 +4,8 @@
       "modules": false
     }],
     "@babel/preset-typescript"
+  ],
+  "ignore": [
+    "**/types.ts"
   ]
 }
