@@ -85,7 +85,7 @@ const setup = async () => {
   const directory = url.pathname.substring(0, url.pathname.lastIndexOf('/'))
   const baseUrl = `${url.origin}${directory}`
   const [html, css] = await Promise.all([
-    fetch(`${baseUrl}/template`).then((resp) => resp.text()),
+    fetch(`${baseUrl}/template.html`).then((resp) => resp.text()),
     fetch(`${baseUrl}/styles.css`).then((resp) => resp.text())
   ])
   const parser = new DOMParser()
@@ -869,5 +869,16 @@ const setup = async () => {
   }
 }
 
-export type { Events }
+export type {
+  Events,
+  Alignments,
+  Sizes,
+  TTSBoundary,
+  TTSState,
+  TTSBoundaryUpdate,
+  TTSListener,
+  TTSBoundaryListener,
+  TTSListenerRecord,
+  ToggleMuteListener
+}
 export default await setup()

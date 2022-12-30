@@ -1,6 +1,6 @@
 {
   "name": "tts-element",
-  "version": "0.0.1-beta",
+  "version": "0.0.2-beta",
   "description": "HTML custom element to convert text to speech using the Web Speech API.",
   "type": "module",
   "main": "dist/text-to-speech/defined.js",
@@ -10,6 +10,7 @@
     "./element": "./dist/text-to-speech/element.js",
     "./package.json": "./package.json"
   },
+  "types": "dist/types.d.ts",
   "bin": {
     "tts-copy-assets": "./dist/cli.js"
   },
@@ -37,6 +38,13 @@
   ],
   "author": "Morgan Ney <morganney@gmail.com>",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/morganney/tts-element.git"
+  },
+  "bugs": {
+    "url": "https://github.com/morganney/tts-element/issues"
+  },
   "files": [
     "dist"
   ],
