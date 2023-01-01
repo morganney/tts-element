@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <title>tts-element CDN example</title>
+    <style>
+      text-to-speech:not(:defined) {
+        display: none;
+      }
+    </style>
+    <script type="module" src="https://unpkg.com/tts-element/dist/text-to-speech/defined.js"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/tts-element@0.0.2-beta/dist/text-to-speech/defined.js?name=my-tts"></script>
+    <script type="module">
+      import ctor from 'https://unpkg.com/tts-element/dist/text-to-speech/element.js'
+
+      customElements.define('tts-ele', ctor)
+      document.getElementsByTagName('tts-ele')[0].addEventListener('boundary', (evt) => {
+        console.log(evt.detail.boundary)
+      })
+    </script>
+  </head>
+  <body>
+    <text-to-speech>Your run-of-the-mill text-to-speech example.</text-to-speech>
+    <tts-ele alignment="vertical">You can import element.js to control when the element is defined.</tts-ele>
+    <my-tts>Use the query parameter "name".</my-tts>
+  </body>
+</html>
