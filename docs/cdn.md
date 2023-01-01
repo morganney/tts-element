@@ -34,7 +34,7 @@ Similarly, you can load `defined.js` with a query parameter of `name` to use a c
         display: none;
       }
     </style>
-    <script type="module" src="https://cdn.jsdelivr.net/npm/tts-element@0.0.2-beta/dist/text-to-speech/defined.js?name=my-tts"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/tts-element@0.0.3-beta/dist/text-to-speech/defined.js?name=my-tts"></script>
   </head>
   <body>
     <my-tts>Use the query parameter "name" to define a custom name for the element when loading.</my-tts>
@@ -81,7 +81,7 @@ You can (wrecklessly) combine all three approaches:
       }
     </style>
     <script type="module" src="https://unpkg.com/tts-element/dist/text-to-speech/defined.js"></script>
-    <script type="module" src="https://cdn.jsdelivr.net/npm/tts-element@0.0.2-beta/dist/text-to-speech/defined.js?name=speech-synth"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/tts-element@0.0.3-beta/dist/text-to-speech/defined.js?name=speech-synth"></script>
     <script type="module">
       import ctor from 'https://unpkg.com/tts-element/dist/text-to-speech/element.js'
 

@@ -16,7 +16,7 @@ HTML custom element to convert text to speech using the [SpeechSynthesis](https:
     <script type="module" src="https://unpkg.com/tts-element/dist/text-to-speech/defined.js"></script>
   </head>
   <body>
-    <text-to-speech>Your run-of-the-mill text to speech example CDN example.</text-to-speech>
+    <text-to-speech>Your run-of-the-mill text to speech CDN example.</text-to-speech>
   </body>
 </html>
 ```
